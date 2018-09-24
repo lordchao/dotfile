@@ -17,7 +17,7 @@ Plugin 'nvie/vim-flake8'
 Plugin 'vim-airline/vim-airline'
 "Plugin 'davidhalter/jedi-vim'
 Plugin 'Valloric/YouCompleteMe'
-"Plugin 'scrooloose/syntastic'
+Plugin 'scrooloose/syntastic'
 Plugin 'Yggdroot/indentLine'
 Plugin 'jiangmiao/auto-pairs'
 "Plugin 'tell-k/vim-autopep8'
@@ -32,13 +32,9 @@ call vundle#end()            " required
 filetype plugin indent on    " required
 "setting
 set nu
-set expandtab           " enter spaces when tab is pressed
-set textwidth=120       " break lines when line length increases
-set tabstop=4           " use 4 spaces to represent tab
 set softtabstop=4
-set shiftwidth=4        " number of spaces to use for auto indent
-set autoindent  
-
+set shiftwidth=4
+set smartindent
 syntax enable
 set background=dark
 colorscheme solarized
@@ -79,7 +75,7 @@ nnoremap <Leader>q :quit<CR>
 nnoremap <Leader>w :up<CR>
 nnoremap <Leader>s :source %<CR>
 nnoremap <Leader>r :w<CR>:!clear;/Users/liuchao/anaconda3/bin/python %<CR>
-
+nnoremap <Leader>m :make<CR>
 "复制匿名寄存器内容到剪贴板
 set clipboard=unnamed
 "Control p MRU for most recently used
