@@ -1,33 +1,27 @@
 set nocompatible              " be iMproved, required
 filetype on                  " required
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
+call plug#begin('~/.vim/plugged')
 
-" let Vundle manage Vundle, required
-
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'scrooloose/nerdtree'
-"Plugin 'vim-scripts/indentpython.vim'
-Plugin 'nvie/vim-flake8'
-"Plugin 'Lokaltog/powerline'
-Plugin 'vim-airline/vim-airline'
-"Plugin 'davidhalter/jedi-vim'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'scrooloose/syntastic'
-Plugin 'Yggdroot/indentLine'
-Plugin 'jiangmiao/auto-pairs'
-"Plugin 'tell-k/vim-autopep8'
-Plugin 'iamcco/mathjax-support-for-mkdp'
-Plugin 'iamcco/markdown-preview.vim'
-Plugin 'godlygeek/tabular'
-Plugin 'plasticboy/vim-markdown'
-Plugin 'kien/ctrlp.vim'
-
-call vundle#end()            " required
+Plug 'scrooloose/nerdtree'
+"Plug 'vim-scripts/indentpython.vim'
+Plug 'nvie/vim-flake8'
+Plug 'vim-airline/vim-airline'
+Plug 'Valloric/YouCompleteMe'
+Plug 'w0rp/ale'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+Plug 'Yggdroot/indentLine'
+Plug 'jiangmiao/auto-pairs'
+"Plug 'tell-k/vim-autopep8'
+Plug 'iamcco/mathjax-support-for-mkdp'
+Plug 'iamcco/markdown-preview.vim'
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
+Plug 'tpope/vim-surround'
+Plug 'skywind3000/asyncrun.vim'
+Plug 'scrooloose/nerdcommenter'
+call plug#end()            " required
 
 filetype plugin indent on    " required
 "setting
@@ -51,8 +45,16 @@ let NERDTreeIgnore=['\~$', '\.pyc$', '\.swp$']
 set fileencoding=utf-8
 
 "ycm
+set completeopt=menu,menuone "关闭自动弹出的窗口
+let g:ycm_semantic_triggers =  {
+			\ 'c,cpp,python,java,go,erlang,perl': ['re!\w{2}'],
+			\ 'cs,lua,javascript': ['re!\w{2}'],
+			\ }
 let g:ycm_python_binary_path='/Users/liuchao/anaconda3/bin/python'
 let g:ycm_autoclose_preview_window_after_completion=1
+let g:ycm_add_preview_to_completeopt = 0
+let g:ycm_show_diagnostics_ui = 0
+let g:ycm_global_ycm_extra_conf= '~/.vim/plugged/YouCompleteMe/third_party/ycmd/examples/.ycm_extra_conf.py'
 map <C-g>:YcmCompleter GoToDefinitionElseDeclaration<CR>
 "split navigations
 nnoremap <C-J> <C-W><C-J>
@@ -70,13 +72,34 @@ set switchbuf=usetab
 nnoremap <F8> :bnext<CR>
 nnoremap <S-F8> :bprevious<CR>
 
-let mapleader = ","
+let mapleader = " "
 nnoremap <Leader>q :quit<CR>
 nnoremap <Leader>w :up<CR>
 nnoremap <Leader>s :source %<CR>
-nnoremap <Leader>r :w<CR>:!clear;/Users/liuchao/anaconda3/bin/python %<CR>
-nnoremap <Leader>m :make<CR>
+nnoremap <Leader>r :w<CR>:!clear;AsyncRun /Users/liuchao/anaconda3/bin/python %<CR>
+nnoremap <Leader>m :AsyncRun make<CR>
+nnoremap <Leader>f :FZF<CR>
+
+"Toggle relative numbering, and set to absolute on loss of focus or insert mode
+set rnu
+function! ToggleNumbersOn()
+    set nu!
+    set rnu
+endfunction
+function! ToggleRelativeOn()
+    set rnu!
+    set nu
+endfunction
+autocmd FocusLost * call ToggleRelativeOn()
+autocmd FocusGained * call ToggleRelativeOn()
+autocmd InsertEnter * call ToggleRelativeOn()
+autocmd InsertLeave * call ToggleRelativeOn()
+
 "复制匿名寄存器内容到剪贴板
 set clipboard=unnamed
 "Control p MRU for most recently used
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip
+
+let g:AutoPairsShortcutFastWrap = '<Leader-b>'
+
+let g:asyncrun_open = 6
