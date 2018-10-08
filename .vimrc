@@ -56,6 +56,10 @@ let g:ycm_add_preview_to_completeopt = 0
 let g:ycm_show_diagnostics_ui = 0
 let g:ycm_global_ycm_extra_conf= '~/.vim/plugged/YouCompleteMe/third_party/ycmd/examples/.ycm_extra_conf.py'
 map <C-g>:YcmCompleter GoToDefinitionElseDeclaration<CR>
+
+"ale
+let g:airline#extensions#ale#enabled = 1
+
 "split navigations
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
