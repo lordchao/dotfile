@@ -100,7 +100,7 @@ autocmd InsertEnter * call ToggleRelativeOn()
 autocmd InsertLeave * call ToggleRelativeOn()
 
 "复制匿名寄存器内容到剪贴板
-set clipboard=unnamed
+"set clipboard=unnamed
 "Control p MRU for most recently used
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 
