@@ -80,7 +80,7 @@ let mapleader = " "
 nnoremap <Leader>q :quit<CR>
 nnoremap <Leader>w :up<CR>
 nnoremap <Leader>s :source %<CR>
-nnoremap <Leader>r :w<CR>:!clear;AsyncRun /Users/liuchao/anaconda3/bin/python %<CR>
+nnoremap <Leader>r :w<CR>:!clear;/Users/liuchao/anaconda3/bin/python %<CR>
 nnoremap <Leader>m :AsyncRun make<CR>
 nnoremap <Leader>f :FZF<CR>
 
