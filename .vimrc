@@ -47,8 +47,8 @@ set fileencoding=utf-8
 "ycm
 set completeopt=menu,menuone "关闭自动弹出的窗口
 let g:ycm_semantic_triggers =  {
-			\ 'c,cpp,python,java,go,erlang,perl': ['re!\w{2}'],
-			\ 'cs,lua,javascript': ['re!\w{2}'],
+			\ 'c,cpp,python,java,go,erlang,perl': ['re!\w{4}'],
+			\ 'cs,lua,javascript': ['re!\w{4}'],
 			\ }
 let g:ycm_python_binary_path='/Users/liuchao/anaconda3/bin/python'
 let g:ycm_autoclose_preview_window_after_completion=1
