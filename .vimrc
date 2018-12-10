@@ -12,6 +12,7 @@ Plug 'w0rp/ale'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'Yggdroot/indentLine'
+Plug 'vimwiki/vimwiki'
 Plug 'jiangmiao/auto-pairs'
 "Plug 'tell-k/vim-autopep8'
 Plug 'iamcco/mathjax-support-for-mkdp'
